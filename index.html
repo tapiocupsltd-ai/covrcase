@@ -186,34 +186,18 @@
       animation: fadeLeft 0.8s 0.2s ease both;
     }
     .kiosk-placeholder {
-      width: 320px; height: 520px;
-      background: linear-gradient(160deg, #1a2035 0%, #0d1220 100%);
-      border: 1px solid rgba(0,88,184,0.3);
+      width: 340px; height: 520px;
       border-radius: 16px;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 1rem;
+      overflow: hidden;
       box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 60px rgba(0,88,184,0.15);
-      padding: 2rem;
+      border: 1px solid rgba(0,88,184,0.2);
     }
-    .kiosk-screen {
-      width: 180px; height: 220px;
-      background: #0a0a14;
-      border-radius: 8px;
-      border: 2px solid rgba(0,88,184,0.4);
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display);
-      font-weight: 700; font-size: 0.7rem;
-      color: var(--blue-bright);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-align: center; padding: 1rem;
+    .kiosk-placeholder img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
     }
-    .kiosk-label {
-      font-family: var(--font-display);
-      font-weight: 800; font-size: 1.6rem;
-      color: var(--white); letter-spacing: -0.02em;
-    }
-    .kiosk-sub-label { font-size: 0.75rem; color: var(--gray); letter-spacing: 0.05em; }
     @media (max-width: 900px) { .hero-visual { display: none; } }
 
     /* ── SECTIONS COMMON ── */
@@ -306,15 +290,17 @@
     }
     .case-img {
       width: 100%; aspect-ratio: 3/4;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.7rem; color: var(--gray); font-family: var(--font-display);
-      letter-spacing: 0.05em; text-transform: uppercase;
-      background: linear-gradient(135deg, #0d1220 0%, #151828 100%);
+      overflow: hidden;
+      background: #f5f5f5;
     }
-    .case-img-1 { background: linear-gradient(135deg, #0a1535 0%, #1a0a35 100%); }
-    .case-img-2 { background: linear-gradient(135deg, #0a2a15 0%, #0a0a35 100%); }
-    .case-img-3 { background: linear-gradient(135deg, #2a0a0a 0%, #0a1535 100%); }
-    .case-img-4 { background: linear-gradient(135deg, #2a1a0a 0%, #0a2030 100%); }
+    .case-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .case-card:hover .case-img img { transform: scale(1.04); }
     .case-info { padding: 1rem; }
     .case-model { font-size: 0.75rem; color: var(--gray); font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
     .case-title { font-family: var(--font-display); font-weight: 600; font-size: 0.95rem; margin-top: 0.2rem; }
@@ -524,11 +510,7 @@
     </div>
     <div class="hero-visual" aria-hidden="true">
       <div class="kiosk-placeholder">
-        <div class="kiosk-label">COVR</div>
-        <div class="kiosk-screen">
-          [MACHINE IMAGE]<br>1330 × 870 × 2030mm<br><br>Placeholder for<br>kiosk photography
-        </div>
-        <div class="kiosk-sub-label">COVRCASES.COM</div>
+        <img src="images/kiosk-hero.png" alt="COVR phone case printing kiosk in a shopping centre" />
       </div>
     </div>
   </section>
@@ -572,28 +554,28 @@
       <p class="section-body">Not a sticker. Not a paper sleeve. UV-cured ink bonded directly to the case — vivid, scratch-resistant, and built to last.</p>
       <div class="case-grid">
         <div class="case-card" data-delay="0">
-          <div class="case-img case-img-1">[Case Photo Placeholder<br>800×1066px]</div>
+          <div class="case-img"><img src="images/iphone16procusomtcase.png" alt="Custom printed iPhone 16 Pro case"/></div>
           <div class="case-info">
             <div class="case-model">iPhone 16 Pro</div>
             <div class="case-title">Custom Photo Print</div>
           </div>
         </div>
         <div class="case-card" data-delay="100">
-          <div class="case-img case-img-2">[Case Photo Placeholder<br>800×1066px]</div>
+          <div class="case-img"><img src="images/s25customcase.png" alt="Custom printed Samsung S25 case"/></div>
           <div class="case-info">
             <div class="case-model">Samsung S25</div>
-            <div class="case-title">Magnetic Case</div>
+            <div class="case-title">Custom Photo Print</div>
           </div>
         </div>
         <div class="case-card" data-delay="200">
-          <div class="case-img case-img-3">[Case Photo Placeholder<br>800×1066px]</div>
+          <div class="case-img"><img src="images/iphone17customcase.png" alt="Custom printed iPhone 17 case"/></div>
           <div class="case-info">
             <div class="case-model">iPhone 17</div>
             <div class="case-title">Custom Photo Print</div>
           </div>
         </div>
         <div class="case-card" data-delay="300">
-          <div class="case-img case-img-4">[Case Photo Placeholder<br>800×1066px]</div>
+          <div class="case-img"><img src="images/pixel9customcase.png" alt="Custom printed Google Pixel 9 case"/></div>
           <div class="case-info">
             <div class="case-model">Google Pixel 9</div>
             <div class="case-title">Custom Photo Print</div>
