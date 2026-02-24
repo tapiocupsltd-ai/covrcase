@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>COVR — Your Photo. Your Case. 3 Minutes.</title>
+  <meta name="description" content="Ireland's first automated phone case printing kiosk. Design it. Print it. Own it. Launching at Dundrum Town Centre, May 2026."/>
+  <meta property="og:title" content="COVR — Custom Phone Cases in 3 Minutes"/>
+  <meta property="og:description" content="Ireland's first automated phone case printing kiosk. Coming to Dundrum Town Centre, May 2026."/>
+  <meta property="og:type" content="website"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #080810;
+      --black-2: #0f0f1a;
+      --card: #12121e;
+      --card-border: rgba(255,255,255,0.07);
+      --blue: #0058B8;
+      --blue-bright: #1E70E8;
+      --cyan: #06c4d4;
+      --white: #ffffff;
+      --mist: #c8d4e8;
+      --gray: #6b7a99;
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(8,8,16,0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--blue-bright); }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a {
+      color: var(--mist); text-decoration: none; font-size: 0.9rem;
+      font-weight: 500; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--blue);
+      color: var(--white) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--blue-bright) !important; transform: translateY(-1px); }
+    @media (max-width: 640px) { .nav-links { display: none; } }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 7rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 40%, rgba(0,88,184,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(6,196,212,0.08) 0%, transparent 50%),
+        var(--black);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 0; opacity: 0.03;
+      background-image: linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      max-width: 640px;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: rgba(0,88,184,0.2);
+      border: 1px solid rgba(0,88,184,0.4);
+      color: var(--cyan);
+      font-size: 0.8rem; font-weight: 600;
+      padding: 0.35rem 0.85rem;
+      border-radius: 20px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+    .hero-badge::before { content: '⚡'; font-size: 0.85rem; }
+    h1 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+    h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--blue-bright), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--mist);
+      line-height: 1.65;
+      margin-bottom: 2.5rem;
+      max-width: 520px;
+      font-weight: 300;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+    .hero-ctas {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: var(--font-body);
+      text-decoration: none;
+      border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      letter-spacing: 0.01em;
+    }
+    .btn-primary:hover {
+      background: var(--blue-bright);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,88,184,0.4);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--mist);
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      font-family: var(--font-body);
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.15);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-secondary:hover {
+      border-color: rgba(255,255,255,0.4);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+    .hero-visual {
+      position: absolute; right: -2rem; top: 50%; transform: translateY(-50%);
+      z-index: 1;
+      animation: fadeLeft 0.8s 0.2s ease both;
+    }
+    .kiosk-placeholder {
+      width: 320px; height: 520px;
+      background: linear-gradient(160deg, #1a2035 0%, #0d1220 100%);
+      border: 1px solid rgba(0,88,184,0.3);
+      border-radius: 16px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 1rem;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 60px rgba(0,88,184,0.15);
+      padding: 2rem;
+    }
+    .kiosk-screen {
+      width: 180px; height: 220px;
+      background: #0a0a14;
+      border-radius: 8px;
+      border: 2px solid rgba(0,88,184,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700; font-size: 0.7rem;
+      color: var(--blue-bright);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: center; padding: 1rem;
+    }
+    .kiosk-label {
+      font-family: var(--font-display);
+      font-weight: 800; font-size: 1.6rem;
+      color: var(--white); letter-spacing: -0.02em;
+    }
+    .kiosk-sub-label { font-size: 0.75rem; color: var(--gray); letter-spacing: 0.05em; }
+    @media (max-width: 900px) { .hero-visual { display: none; } }
+
+    /* ── SECTIONS COMMON ── */
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-eyebrow {
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .section-body { color: var(--mist); font-size: 1.05rem; font-weight: 300; max-width: 560px; }
+
+    /* ── HOW IT WORKS ── */
+    #how {
+      background: linear-gradient(180deg, var(--black) 0%, var(--black-2) 100%);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .steps {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+      margin-top: 3.5rem;
+    }
+    @media (max-width: 640px) { .steps { grid-template-columns: 1fr; } }
+    .step {
+      position: relative;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      opacity: 0; transform: translateY(20px);
+    }
+    .step.visible { animation: fadeUp 0.5s ease forwards; }
+    .step:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(6,196,212,0.1);
+      border-color: rgba(6,196,212,0.2);
+    }
+    .step-num {
+      font-family: var(--font-display);
+      font-weight: 800; font-size: 3rem;
+      color: rgba(0,88,184,0.25);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+    .step-icon { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+    .step h3 {
+      font-family: var(--font-display);
+      font-weight: 700; font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+    }
+    .step p { color: var(--mist); font-size: 0.95rem; font-weight: 300; }
+    .connector {
+      position: absolute; top: 2.5rem; right: -1.1rem;
+      width: 2rem; height: 2px;
+      background: linear-gradient(90deg, var(--blue), transparent);
+      z-index: 2;
+    }
+    @media (max-width: 640px) { .connector { display: none; } }
+
+    /* ── PRODUCT ── */
+    #product { background: var(--black); }
+    .case-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 900px) { .case-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .case-grid { grid-template-columns: 1fr; } }
+    .case-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+      opacity: 0; transform: translateY(20px);
+    }
+    .case-card.visible { animation: fadeUp 0.5s ease forwards; }
+    .case-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 20px rgba(0,88,184,0.15);
+    }
+    .case-img {
+      width: 100%; aspect-ratio: 3/4;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; color: var(--gray); font-family: var(--font-display);
+      letter-spacing: 0.05em; text-transform: uppercase;
+      background: linear-gradient(135deg, #0d1220 0%, #151828 100%);
+    }
+    .case-img-1 { background: linear-gradient(135deg, #0a1535 0%, #1a0a35 100%); }
+    .case-img-2 { background: linear-gradient(135deg, #0a2a15 0%, #0a0a35 100%); }
+    .case-img-3 { background: linear-gradient(135deg, #2a0a0a 0%, #0a1535 100%); }
+    .case-img-4 { background: linear-gradient(135deg, #2a1a0a 0%, #0a2030 100%); }
+    .case-info { padding: 1rem; }
+    .case-model { font-size: 0.75rem; color: var(--gray); font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
+    .case-title { font-family: var(--font-display); font-weight: 600; font-size: 0.95rem; margin-top: 0.2rem; }
+    .product-cta-row {
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+      gap: 1.5rem; margin-top: 3rem;
+      padding: 2rem;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+    }
+    .product-stat { text-align: center; }
+    .product-stat-num {
+      font-family: var(--font-display);
+      font-weight: 800; font-size: 2rem; color: var(--white);
+    }
+    .product-stat-label { font-size: 0.8rem; color: var(--gray); font-weight: 400; }
+    .product-models { color: var(--mist); font-size: 0.9rem; font-weight: 300; }
+    .product-models strong { color: var(--white); font-weight: 600; }
+
+    /* ── WAITLIST ── */
+    #waitlist {
+      background: linear-gradient(135deg, var(--black-2) 0%, rgba(0,88,184,0.08) 100%);
+      border-top: 1px solid rgba(0,88,184,0.2);
+      border-bottom: 1px solid rgba(0,88,184,0.2);
+      text-align: center;
+    }
+    .waitlist-inner { max-width: 580px; margin: 0 auto; }
+    .waitlist-form {
+      display: flex; gap: 0.75rem; margin-top: 2rem; flex-wrap: wrap;
+    }
+    .waitlist-form input {
+      flex: 1; min-width: 200px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--white);
+      padding: 0.85rem 1.25rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: var(--font-body);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .waitlist-form input::placeholder { color: var(--gray); }
+    .waitlist-form input:focus { border-color: var(--blue); }
+    .waitlist-note { font-size: 0.8rem; color: var(--gray); margin-top: 0.75rem; }
+    .social-row {
+      display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;
+    }
+    .social-btn {
+      display: flex; align-items: center; gap: 0.5rem;
+      color: var(--mist); text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 0.5rem 1rem; border-radius: 6px;
+      font-size: 0.85rem; font-weight: 500;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .social-btn:hover { border-color: rgba(255,255,255,0.35); color: var(--white); background: rgba(255,255,255,0.04); }
+    .social-btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+    /* ── PARTNERS ── */
+    #partners { background: var(--black); }
+    .partner-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 640px) { .partner-grid { grid-template-columns: 1fr; } }
+    .partner-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      opacity: 0; transform: translateY(20px);
+    }
+    .partner-card.visible { animation: fadeUp 0.5s ease forwards; }
+    .partner-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(0,88,184,0.15);
+      border-color: rgba(0,88,184,0.3);
+    }
+    .partner-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+    .partner-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .partner-card p { color: var(--mist); font-size: 0.92rem; font-weight: 300; line-height: 1.6; }
+    .partner-stats {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+      margin-top: 3rem; margin-bottom: 3rem;
+    }
+    @media (max-width: 640px) { .partner-stats { grid-template-columns: 1fr; } }
+    .pstat {
+      background: linear-gradient(135deg, rgba(0,88,184,0.12) 0%, rgba(0,88,184,0.04) 100%);
+      border: 1px solid rgba(0,88,184,0.25);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .pstat-num {
+      font-family: var(--font-display);
+      font-weight: 800; font-size: 2.2rem;
+      background: linear-gradient(135deg, var(--white), var(--cyan));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .pstat-label { font-size: 0.85rem; color: var(--mist); font-weight: 300; margin-top: 0.2rem; }
+    .partner-cta-box {
+      background: var(--card);
+      border: 1px solid rgba(0,88,184,0.3);
+      border-radius: 16px;
+      padding: 2.5rem;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;
+    }
+    .partner-cta-box h3 {
+      font-family: var(--font-display);
+      font-weight: 700; font-size: 1.4rem;
+    }
+    .partner-cta-box p { color: var(--mist); font-size: 0.95rem; font-weight: 300; margin-top: 0.4rem; }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--black-2);
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .pillars {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 640px) { .pillars { grid-template-columns: repeat(2, 1fr); } }
+    .pillar {
+      text-align: center; padding: 1.5rem 1rem;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+    }
+    .pillar-icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+    .pillar-label {
+      font-family: var(--font-display);
+      font-weight: 700; font-size: 0.95rem;
+    }
+    .pillar-desc { font-size: 0.8rem; color: var(--gray); margin-top: 0.2rem; }
+    .about-story {
+      max-width: 640px; margin-top: 2.5rem;
+      font-size: 1.05rem; color: var(--mist); font-weight: 300; line-height: 1.75;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 3rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;
+    }
+    .footer-logo { font-family: var(--font-display); font-weight: 800; font-size: 1.4rem; letter-spacing: -0.02em; }
+    .footer-logo span { color: var(--blue-bright); }
+    .footer-tagline { font-size: 0.8rem; color: var(--gray); margin-top: 0.2rem; }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { color: var(--gray); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-copy { font-size: 0.8rem; color: var(--gray); width: 100%; text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.04); margin-top: 0.5rem; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeLeft {
+      from { opacity: 0; transform: translateY(-50%) translateX(40px); }
+      to   { opacity: 1; transform: translateY(-50%) translateX(0); }
+    }
+
+    /* ── SUCCESS STATE ── */
+    .success-msg {
+      display: none; padding: 1rem 1.5rem;
+      background: rgba(6,196,212,0.1);
+      border: 1px solid rgba(6,196,212,0.3);
+      border-radius: 8px; margin-top: 1rem;
+      color: var(--cyan); font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#hero">COV<span>R</span></a>
+    <div class="nav-links">
+      <a href="#how">How It Works</a>
+      <a href="#product">Product</a>
+      <a href="#partners">Partners</a>
+      <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Ready in 3 Min</div>
+      <h1>Your Photo.<br><em>Your Case.</em><br>3 Minutes.</h1>
+      <p class="hero-sub">Ireland's first automated phone case printing kiosk. Scan a QR code, upload a photo, pay by card — walk away with a premium custom case while you shop.</p>
+      <div class="hero-ctas">
+        <a href="#waitlist" class="btn-primary">Join the Waitlist</a>
+        <a href="#partners" class="btn-secondary">Partner With Us →</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="kiosk-placeholder">
+        <div class="kiosk-label">COVR</div>
+        <div class="kiosk-screen">
+          [MACHINE IMAGE]<br>1330 × 870 × 2030mm<br><br>Placeholder for<br>kiosk photography
+        </div>
+        <div class="kiosk-sub-label">COVRCASES.COM</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="container">
+      <p class="section-eyebrow">How It Works</p>
+      <h2 class="section-title">From photo to case<br>in three simple steps</h2>
+      <p class="section-body">No app download. No waiting days for delivery. No complicated ordering process. Just you, your phone, and 3 minutes.</p>
+      <div class="steps">
+        <div class="step" data-delay="0">
+          <div class="connector"></div>
+          <div class="step-num">01</div>
+          <span class="step-icon">📱</span>
+          <h3>Scan the QR Code</h3>
+          <p>Open your phone camera and scan the QR code on the kiosk. Upload your favourite photo — from camera roll, Instagram, or anywhere.</p>
+        </div>
+        <div class="step" data-delay="100">
+          <div class="connector"></div>
+          <div class="step-num">02</div>
+          <span class="step-icon">💳</span>
+          <h3>Choose & Pay</h3>
+          <p>Select your phone model, adjust the design, and tap to pay with card or contactless. €25 for a standard case, €30 for a magnetic case.</p>
+        </div>
+        <div class="step" data-delay="200">
+          <div class="step-num">03</div>
+          <span class="step-icon">🎨</span>
+          <h3>Collect Your Case</h3>
+          <p>Watch the machine print your case in real time. In 3 minutes flat, collect your premium custom case from the dispenser.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT -->
+  <section id="product">
+    <div class="container">
+      <p class="section-eyebrow">The Product</p>
+      <h2 class="section-title">Premium UV print.<br>Every time.</h2>
+      <p class="section-body">Not a sticker. Not a paper sleeve. UV-cured ink bonded directly to the case — vivid, scratch-resistant, and built to last.</p>
+      <div class="case-grid">
+        <div class="case-card" data-delay="0">
+          <div class="case-img case-img-1">[Case Photo Placeholder<br>800×1066px]</div>
+          <div class="case-info">
+            <div class="case-model">iPhone 16 Pro</div>
+            <div class="case-title">Custom Photo Print</div>
+          </div>
+        </div>
+        <div class="case-card" data-delay="100">
+          <div class="case-img case-img-2">[Case Photo Placeholder<br>800×1066px]</div>
+          <div class="case-info">
+            <div class="case-model">Samsung S25</div>
+            <div class="case-title">Magnetic Case</div>
+          </div>
+        </div>
+        <div class="case-card" data-delay="200">
+          <div class="case-img case-img-3">[Case Photo Placeholder<br>800×1066px]</div>
+          <div class="case-info">
+            <div class="case-model">iPhone 17</div>
+            <div class="case-title">Custom Photo Print</div>
+          </div>
+        </div>
+        <div class="case-card" data-delay="300">
+          <div class="case-img case-img-4">[Case Photo Placeholder<br>800×1066px]</div>
+          <div class="case-info">
+            <div class="case-model">Google Pixel 9</div>
+            <div class="case-title">Custom Photo Print</div>
+          </div>
+        </div>
+      </div>
+      <div class="product-cta-row">
+        <div class="product-stat">
+          <div class="product-stat-num">€25</div>
+          <div class="product-stat-label">Standard Case</div>
+        </div>
+        <div class="product-stat">
+          <div class="product-stat-num">€30</div>
+          <div class="product-stat-label">Magnetic Case</div>
+        </div>
+        <div class="product-stat">
+          <div class="product-stat-num">&lt; 3 min</div>
+          <div class="product-stat-label">Print Time</div>
+        </div>
+        <p class="product-models"><strong>Supported models:</strong> iPhone 14–17 · Samsung S23–S25 · Google Pixel 7–9</p>
+        <a href="#waitlist" class="btn-primary">Join the Waitlist</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAITLIST -->
+  <section id="waitlist">
+    <div class="container">
+      <div class="waitlist-inner">
+        <p class="section-eyebrow">Coming Soon</p>
+        <h2 class="section-title">Be first through the door</h2>
+        <p class="section-body" style="margin:0 auto 0; text-align:center;">Launching at Dundrum Town Centre, Dublin — May 2026. Waitlist members get exclusive launch-week pricing.</p>
+        <form class="waitlist-form" id="waitlist-form" onsubmit="handleWaitlist(event)">
+          <input type="text" placeholder="Your name" id="wl-name" required autocomplete="name"/>
+          <input type="email" placeholder="Your email address" id="wl-email" required autocomplete="email"/>
+          <button type="submit" class="btn-primary">Notify Me</button>
+        </form>
+        <p class="waitlist-note">No spam. Unsubscribe any time. Your data is safe with us.</p>
+        <div class="success-msg" id="success-msg">🎉 You're on the list! We'll be in touch before launch.</div>
+        <div class="social-row">
+          <a href="https://instagram.com/covr_ireland" target="_blank" rel="noopener" class="social-btn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            @covr_ireland
+          </a>
+          <a href="https://tiktok.com/@covr_ireland" target="_blank" rel="noopener" class="social-btn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.2 8.2 0 004.79 1.53V6.78a4.85 4.85 0 01-1.02-.09z"/></svg>
+            @covr_ireland
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section id="partners">
+    <div class="container">
+      <p class="section-eyebrow">For Retail Partners</p>
+      <h2 class="section-title">Add a revenue stream<br>to your space. Zero risk.</h2>
+      <p class="section-body">COVR operates on a pure revenue-share model. No capital outlay, no staffing, no ongoing management from you. Just passive income from 3m² of retail space.</p>
+
+      <div class="partner-grid">
+        <div class="partner-card" data-delay="0">
+          <span class="partner-icon">🚫💰</span>
+          <h3>Zero Upfront Cost</h3>
+          <p>COVR covers the full cost of the machine, installation, insurance, and maintenance. You provide the footprint, we handle everything else.</p>
+        </div>
+        <div class="partner-card" data-delay="100">
+          <span class="partner-icon">📈</span>
+          <h3>Pure Revenue Share</h3>
+          <p>Partners earn 15–20% of every transaction with no financial risk. The machine operates 7 days a week, self-service, no staff required.</p>
+        </div>
+        <div class="partner-card" data-delay="200">
+          <span class="partner-icon">🧲</span>
+          <h3>Drives Footfall & Dwell</h3>
+          <p>The kiosk is a destination in its own right. Customers wait 3 minutes for their case — browsing your centre while they do. A genuine footfall driver.</p>
+        </div>
+      </div>
+
+      <div class="partner-stats">
+        <div class="pstat">
+          <div class="pstat-num">€12–16k</div>
+          <div class="pstat-label">Estimated annual revenue share per location</div>
+        </div>
+        <div class="pstat">
+          <div class="pstat-num">3m²</div>
+          <div class="pstat-label">Footprint required — fits any available unit or alcove</div>
+        </div>
+        <div class="pstat">
+          <div class="pstat-num">54%</div>
+          <div class="pstat-label">Contribution margin — strong unit economics underpin every deal</div>
+        </div>
+        <div class="pstat">
+          <div class="pstat-num">First</div>
+          <div class="pstat-label">No automated phone case kiosk exists in Ireland — be first in your centre</div>
+        </div>
+      </div>
+
+      <div class="partner-cta-box">
+        <div>
+          <h3>Interested in hosting COVR?</h3>
+          <p>We're actively seeking premium retail locations across Ireland. Get in touch to discuss a partnership.</p>
+        </div>
+        <a href="mailto:hello@covrcases.com?subject=COVR Partnership Enquiry" class="btn-primary">Enquire About Partnership</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <p class="section-eyebrow">About COVR</p>
+      <h2 class="section-title">Irish. Tech-forward.<br>First mover.</h2>
+      <p class="about-story">COVR is an Irish company on a mission to bring instant, premium personalisation to retail. We're deploying Ireland's first automated UV phone case printing kiosks in premium shopping centres — starting with Dundrum Town Centre in May 2026. No gimmicks, no compromises: just the best custom phone case you can buy, ready while you shop.</p>
+      <div class="pillars">
+        <div class="pillar">
+          <span class="pillar-icon">⚡</span>
+          <div class="pillar-label">Fast</div>
+          <div class="pillar-desc">Minutes, not days</div>
+        </div>
+        <div class="pillar">
+          <span class="pillar-icon">🎨</span>
+          <div class="pillar-label">Creative</div>
+          <div class="pillar-desc">Unlimited designs</div>
+        </div>
+        <div class="pillar">
+          <span class="pillar-icon">💎</span>
+          <div class="pillar-label">Premium</div>
+          <div class="pillar-desc">Quality that lasts</div>
+        </div>
+        <div class="pillar">
+          <span class="pillar-icon">🚀</span>
+          <div class="pillar-label">Modern</div>
+          <div class="pillar-desc">Cutting-edge UV tech</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">COV<span>R</span></div>
+        <div class="footer-tagline">Design it. Print it. Own it.</div>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:hello@covrcases.com">hello@covrcases.com</a>
+        <a href="#waitlist">Waitlist</a>
+        <a href="#partners">Partners</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+      <div class="footer-links">
+        <a href="https://instagram.com/covr_ireland" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://tiktok.com/@covr_ireland" target="_blank" rel="noopener">TikTok</a>
+      </div>
+    </div>
+    <div class="footer-inner">
+      <p class="footer-copy">© 2026 COVR Ireland. All rights reserved. Launching May 2026 at Dundrum Town Centre, Dublin.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Intersection Observer for scroll animations
+    const animateEls = document.querySelectorAll('.step, .case-card, .partner-card');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          const delay = el.target.dataset.delay || 0;
+          setTimeout(() => el.target.classList.add('visible'), parseInt(delay));
+          observer.unobserve(el.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    animateEls.forEach(el => observer.observe(el));
+
+    // Waitlist form
+    function handleWaitlist(e) {
+      e.preventDefault();
+      const name = document.getElementById('wl-name').value;
+      const email = document.getElementById('wl-email').value;
+      // TODO: Connect to Mailchimp/ConvertKit API endpoint
+      console.log('Waitlist signup:', { name, email });
+      document.getElementById('waitlist-form').style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
