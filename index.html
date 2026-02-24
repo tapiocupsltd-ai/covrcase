@@ -627,8 +627,8 @@
         <h2 class="section-title">Be first through the door</h2>
         <p class="section-body" style="margin:0 auto 0; text-align:center;">Launching at Dundrum Town Centre, Dublin — May 2026. Waitlist members get exclusive launch-week pricing.</p>
         <form class="waitlist-form" id="waitlist-form" onsubmit="handleWaitlist(event)">
-          <input type="text" placeholder="Your name" id="wl-name" required autocomplete="name"/>
-          <input type="email" placeholder="Your email address" id="wl-email" required autocomplete="email"/>
+          <input type="text" name="name" placeholder="Your name" id="wl-name" required autocomplete="name"/>
+          <input type="email" name="email" placeholder="Your email address" id="wl-email" required autocomplete="email"/>
           <button type="submit" class="btn-primary">Notify Me</button>
         </form>
         <p class="waitlist-note">No spam. Unsubscribe any time. Your data is safe with us.</p>
@@ -770,14 +770,29 @@
     animateEls.forEach(el => observer.observe(el));
 
     // Waitlist form
-    function handleWaitlist(e) {
+    async function handleWaitlist(e) {
       e.preventDefault();
-      const name = document.getElementById('wl-name').value;
-      const email = document.getElementById('wl-email').value;
-      // TODO: Connect to Mailchimp/ConvertKit API endpoint
-      console.log('Waitlist signup:', { name, email });
-      document.getElementById('waitlist-form').style.display = 'none';
-      document.getElementById('success-msg').style.display = 'block';
+      const form = document.getElementById('waitlist-form');
+      const btn = form.querySelector('button');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      try {
+        const res = await fetch('https://formspree.io/f/xpqjkzer', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          document.getElementById('success-msg').style.display = 'block';
+        } else {
+          btn.textContent = 'Try again';
+          btn.disabled = false;
+        }
+      } catch {
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+      }
     }
   </script>
 </body>
