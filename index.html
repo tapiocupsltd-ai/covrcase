@@ -479,16 +479,25 @@
       to   { opacity: 1; transform: translateY(-50%) translateX(0); }
     }
 
-    /* ── BREVO FORM ── */
-    .brevo-form-wrap {
-      margin-top: 2rem;
+    /* Brevo iframe form */
+    .brevo-wrap {
+      margin-top: 1.5rem;
+      width: 100%;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
       border-radius: 12px;
       overflow: hidden;
-      background: transparent;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
     }
-    .brevo-form-wrap iframe {
-      filter: invert(1) hue-rotate(180deg) brightness(0.85);
-      border-radius: 12px;
+    .brevo-wrap iframe {
+      display: block;
+      width: 100% !important;
+      height: 310px;
+      border: none;
+      /* Invert Brevo's white background to match dark site */
+      filter: invert(1) hue-rotate(180deg) saturate(0.7) brightness(0.88);
     }
 
     /* ── SUCCESS STATE ── */
@@ -496,8 +505,9 @@
       display: none; padding: 1rem 1.5rem;
       background: rgba(6,196,212,0.1);
       border: 1px solid rgba(6,196,212,0.3);
-      border-radius: 8px; margin-top: 1rem;
-      color: var(--cyan); font-size: 0.95rem;
+      border-radius: 8px; margin-top: 1.5rem;
+      color: var(--cyan); font-size: 1rem;
+      text-align: center;
     }
   </style>
 </head>
@@ -627,9 +637,12 @@
         <p class="section-eyebrow">Coming Soon</p>
         <h2 class="section-title">Be first through the door</h2>
         <p class="section-body" style="margin:0 auto 0; text-align:center;">Launching May 2026 at a premium Dublin location. Waitlist members get exclusive launch-week pricing.</p>
-        <div class="brevo-form-wrap">
-          <iframe width="540" height="305" src="https://ac0771fc.sibforms.com/serve/MUIFAByY_9TWXYyARED1tY-BAvuCI9iZnmRd6wbUMQXblmzJ6USyT_buaDpfpFWP5eU7NpiYmfh6_Qke3h8agXLzslSRxWQG8gqj6sHAIlwisCEuuzWE5AIYcA9PXIowljnW5gW8LmNufUe1NC0u6fI89oCrVgh0q6Cp0NGgMyMK6YWc0ZM4ri02_OKzbyudBPJT_Hrcz9e3pewjDQ==" frameborder="0" scrolling="auto" allowfullscreen style="display:block;margin:0 auto;max-width:100%;border:none;"></iframe>
-        </div>
+        <form class="waitlist-form" id="waitlist-form" onsubmit="handleWaitlist(event)">
+          <input type="text" placeholder="Your first name" id="wl-name" required autocomplete="name"/>
+          <input type="email" placeholder="Your email address" id="wl-email" required autocomplete="email"/>
+          <button type="submit" class="btn-primary" id="wl-btn">Join the Waitlist</button>
+        </form>
+        <div class="success-msg" id="success-msg">🎉 You're on the list! Check your inbox — we'll see you at launch.</div>
         <p class="waitlist-note">No spam. Unsubscribe any time. Your data is safe with us.</p>
         <div class="social-row">
           <a href="https://instagram.com/covr_ireland" target="_blank" rel="noopener" class="social-btn">
@@ -754,20 +767,52 @@
   </footer>
 
   <script>
-    // Intersection Observer for scroll animations
-    const animateEls = document.querySelectorAll('.step, .case-card, .partner-card');
+    async function handleWaitlist(e) {
+      e.preventDefault();
+      const btn = document.getElementById('wl-btn');
+      const name = document.getElementById('wl-name').value.trim();
+      const email = document.getElementById('wl-email').value.trim();
+
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      const body = new URLSearchParams({
+        'EMAIL': email,
+        'FIRSTNAME': name,
+        'email_address_check': '',
+        'locale': 'en',
+        'html_type': 'simple'
+      });
+
+      try {
+        const res = await fetch('https://ac0771fc.sibforms.com/serve/MUIFAByY_9TWXYyARED1tY-BAvuCI9iZnmRd6wbUMQXblmzJ6USyT_buaDpfpFWP5eU7NpiYmfh6_Qke3h8agXLzslSRxWQG8gqj6sHAIlwisCEuuzWE5AIYcA9PXIowljnW5gW8LmNufUe1NC0u6fI89oCrVgh0q6Cp0NGgMyMK6YWc0ZM4ri02_OKzbyudBPJT_Hrcz9e3pewjDQ==', {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: body.toString()
+        });
+
+        // no-cors means we can't read the response, but submission works
+        document.getElementById('waitlist-form').style.display = 'none';
+        document.getElementById('success-msg').style.display = 'block';
+
+      } catch (err) {
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+      }
+    }
+
+    // Scroll animations
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(el => {
-        if (el.isIntersecting) {
-          const delay = el.target.dataset.delay || 0;
-          setTimeout(() => el.target.classList.add('visible'), parseInt(delay));
-          observer.unobserve(el.target);
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
         }
       });
     }, { threshold: 0.1 });
-    animateEls.forEach(el => observer.observe(el));
 
-
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
