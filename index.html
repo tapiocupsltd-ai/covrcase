@@ -616,8 +616,8 @@
         <h2 class="section-title">Be first through the door</h2>
         <p class="section-body" style="margin:0 auto 0; text-align:center;">Launching May 2026 at a premium Dublin location. Waitlist members get exclusive launch-week pricing.</p>
         <form class="waitlist-form" id="waitlist-form" onsubmit="handleWaitlist(event)">
-          <input type="text" name="name" placeholder="Your name" id="wl-name" required autocomplete="name"/>
-          <input type="email" name="email" placeholder="Your email address" id="wl-email" required autocomplete="email"/>
+          <input type="text" placeholder="Your name" id="wl-name" required autocomplete="name"/>
+          <input type="email" placeholder="Your email address" id="wl-email" required autocomplete="email"/>
           <button type="submit" class="btn-primary">Notify Me</button>
         </form>
         <p class="waitlist-note">No spam. Unsubscribe any time. Your data is safe with us.</p>
@@ -662,7 +662,7 @@
       </div>
 
       <div class="partner-stats">
-        <div class="pstat" style="display:none">
+        <div class="pstat">
           <div class="pstat-num">€12–16k</div>
           <div class="pstat-label">Estimated annual revenue share per location</div>
         </div>
@@ -670,7 +670,7 @@
           <div class="pstat-num">3m²</div>
           <div class="pstat-label">Footprint required — fits any available unit or alcove</div>
         </div>
-        <div class="pstat" style="display:none">
+        <div class="pstat">
           <div class="pstat-num">54%</div>
           <div class="pstat-label">Contribution margin — strong unit economics underpin every deal</div>
         </div>
@@ -758,27 +758,49 @@
     }, { threshold: 0.1 });
     animateEls.forEach(el => observer.observe(el));
 
-    // Waitlist form
+    // Waitlist form — Brevo API
     async function handleWaitlist(e) {
       e.preventDefault();
       const form = document.getElementById('waitlist-form');
       const btn = form.querySelector('button');
+      const name = document.getElementById('wl-name').value.trim();
+      const email = document.getElementById('wl-email').value.trim();
+      const firstName = name.split(' ')[0];
+      const lastName = name.split(' ').slice(1).join(' ') || '';
+
       btn.textContent = 'Sending…';
       btn.disabled = true;
+
       try {
-        const res = await fetch('https://formspree.io/f/xpqjkzer', {
+        const res = await fetch('https://api.brevo.com/v3/contacts', {
           method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: new FormData(form)
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'api-key': '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'
+          },
+          body: JSON.stringify({
+            email: email,
+            attributes: {
+              FIRSTNAME: firstName,
+              LASTNAME: lastName
+            },
+            listIds: [3],
+            updateEnabled: true
+          })
         });
-        if (res.ok) {
+
+        if (res.ok || res.status === 204) {
           form.style.display = 'none';
           document.getElementById('success-msg').style.display = 'block';
         } else {
+          const err = await res.json();
+          console.error('Brevo error:', err);
           btn.textContent = 'Try again';
           btn.disabled = false;
         }
-      } catch {
+      } catch (err) {
+        console.error('Network error:', err);
         btn.textContent = 'Try again';
         btn.disabled = false;
       }
