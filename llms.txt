@@ -1,0 +1,39 @@
+# COVR — llms.txt
+# https://www.covrcases.com
+
+## About
+COVR is Ireland's first automated phone case printing kiosk company.
+We operate UV printing kiosks in premium Dublin shopping centres.
+
+## Product
+- Custom phone cases are printed in under 3 minutes from any personal photo
+- Standard cases: €25
+- MagSafe magnetic cases: €30
+- Payment: card or contactless at the kiosk
+- No app download required
+
+## Compatible Phone Models
+- iPhone 14, 15, 16, 16 Pro, 17
+- Samsung Galaxy S23, S24, S25
+- Google Pixel 7, 8, 9
+
+## How It Works
+1. Scan the QR code on the kiosk with your phone camera
+2. Upload a photo from your camera roll or Instagram
+3. Select your phone model, adjust the design, pay by card
+4. Collect your printed case from the dispenser in under 3 minutes
+
+## Print Technology
+UV-cured ink bonded directly to the case — vivid, scratch-resistant, built to last.
+Not a sticker. Not a paper sleeve.
+
+## Launch
+Launching May 2026 at a premium Dublin shopping centre.
+Join the waitlist at https://www.covrcases.com for exclusive launch-week pricing.
+
+## Contact
+hello@covrcases.com
+
+## Social
+- Instagram: https://www.instagram.com/covr_ireland
+- TikTok: https://www.tiktok.com/@covr_ireland

@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow"/>
+  <title>Covr — Design it. Print it. Own it.</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --gray: #64748b;
+      --gray-light: #e2e8f0;
+      --blue: #1e40af;
+      --cyan: #06b6d4;
+      --purple: #7c3aed;
+      --card-bg: #111111;
+      --border: rgba(255,255,255,0.08);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 5%;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a {
+      color: var(--gray-light); text-decoration: none; font-size: 0.9rem;
+      font-weight: 500; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      color: var(--white) !important;
+      padding: 0.55rem 1.4rem;
+      border-radius: 8px;
+      font-weight: 600 !important;
+      letter-spacing: 0.03em;
+      font-size: 0.85rem !important;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 7rem 5% 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(30,64,175,0.25) 0%, transparent 60%),
+        radial-gradient(circle at 15% 80%, rgba(6,182,212,0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(124,58,237,0.12) 0%, transparent 40%);
+    }
+
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    }
+
+    .hero-tag {
+      position: relative; z-index: 1;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(6,182,212,0.1);
+      border: 1px solid rgba(6,182,212,0.3);
+      color: var(--cyan);
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.4rem 1rem; border-radius: 20px;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-tag span { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); animation: pulse 2s infinite; }
+
+    .hero h1 {
+      position: relative; z-index: 1;
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.0;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+
+    .hero h1 .gradient-text {
+      background: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      position: relative; z-index: 1;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--gray-light);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+      font-weight: 300;
+      line-height: 1.7;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+
+    .hero-buttons {
+      position: relative; z-index: 1;
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      color: var(--white);
+      padding: 0.9rem 2.2rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 30px rgba(124,58,237,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(124,58,237,0.5); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.9rem 2.2rem;
+      border-radius: 10px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--cyan); background: rgba(6,182,212,0.06); }
+
+    .hero-stats {
+      position: relative; z-index: 1;
+      display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap;
+      margin-top: 4rem;
+      animation: fadeUp 0.8s 0.4s ease both;
+    }
+
+    .stat { text-align: center; }
+    .stat-number {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.2rem; font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .stat-label { font-size: 0.8rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.2rem; }
+
+    /* ─── HOW IT WORKS ─── */
+    section { padding: 6rem 5%; }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub { color: var(--gray); font-size: 1.05rem; font-weight: 300; max-width: 480px; line-height: 1.7; }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .step-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at top left, rgba(6,182,212,0.06), transparent 60%);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .step-card:hover { transform: translateY(-4px); border-color: rgba(6,182,212,0.3); box-shadow: 0 20px 40px rgba(6,182,212,0.1); }
+    .step-card:hover::before { opacity: 1; }
+
+    .step-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--cyan); margin-bottom: 1rem;
+    }
+
+    .step-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .step-title { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .step-desc { color: var(--gray); font-size: 0.9rem; line-height: 1.6; }
+
+    /* ─── PILLARS ─── */
+    .pillars { background: #0d0d0d; }
+
+    .pillars-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1100px; margin: 0 auto;
+    }
+
+    .pillar-list { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2.5rem; }
+
+    .pillar {
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.4rem;
+      transition: border-color 0.25s;
+    }
+    .pillar:hover { border-color: rgba(124,58,237,0.4); }
+
+    .pillar-icon-wrap {
+      width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+    .pi-cyan { background: rgba(6,182,212,0.12); }
+    .pi-purple { background: rgba(124,58,237,0.12); }
+    .pi-blue { background: rgba(30,64,175,0.15); }
+    .pi-white { background: rgba(255,255,255,0.08); }
+
+    .pillar-text h4 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .pillar-text p { color: var(--gray); font-size: 0.88rem; line-height: 1.5; }
+
+    .pillars-visual {
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .phone-mockup {
+      width: 220px;
+      height: 440px;
+      background: linear-gradient(160deg, #1a1a2e, #16213e);
+      border-radius: 36px;
+      border: 2px solid rgba(255,255,255,0.12);
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .phone-screen {
+      position: absolute; inset: 12px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, #06b6d4 0%, #7c3aed 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .phone-case-preview {
+      font-size: 3.5rem; margin-bottom: 0.75rem;
+    }
+
+    .phone-screen p { font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.85); line-height: 1.4; }
+
+    .phone-glow {
+      position: absolute;
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(6,182,212,0.2) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    /* ─── COVER DESIGNER ─── */
+    .designer-section { background: var(--black); position: relative; overflow: hidden; }
+
+    .designer-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 3.5rem;
+    }
+
+    .designer-upload-area {
+      background: var(--card-bg);
+      border: 2px dashed rgba(6,182,212,0.3);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .designer-upload-area:hover,
+    .designer-upload-area.drag-over {
+      border-color: var(--cyan);
+      background: rgba(6,182,212,0.06);
+    }
+
+    .upload-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .upload-text { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .upload-hint { font-size: 0.8rem; color: var(--gray); }
+
+    .designer-gallery-label {
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gray);
+      margin: 1.5rem 0 0.75rem;
+    }
+
+    .designer-gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+    }
+
+    .gallery-item {
+      background: none;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 0;
+      cursor: pointer;
+      aspect-ratio: 1;
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .gallery-item:hover {
+      border-color: rgba(255,255,255,0.25);
+      transform: translateY(-2px);
+    }
+    .gallery-item.active {
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 2px rgba(6,182,212,0.3), 0 4px 12px rgba(6,182,212,0.2);
+    }
+
+    .gallery-thumb { width: 100%; height: 100%; border-radius: 10px; }
+
+    .designer-preview {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .designer-phone-glow {
+      position: absolute;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(6,182,212,0.2) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    .designer-phone-mockup {
+      width: 280px; height: 560px;
+      background: linear-gradient(160deg, #1a1a2e, #16213e);
+      border-radius: 44px;
+      border: 2px solid rgba(255,255,255,0.12);
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .designer-phone-notch {
+      position: absolute;
+      top: 12px; left: 50%; transform: translateX(-50%);
+      width: 80px; height: 24px;
+      background: #0a0a0a;
+      border-radius: 12px;
+      z-index: 3;
+    }
+
+    .designer-phone-screen {
+      position: absolute;
+      inset: 12px;
+      border-radius: 34px;
+      overflow: hidden;
+    }
+
+    .case-design-layer {
+      position: absolute; inset: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .case-image-layer {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 1;
+    }
+    .case-image-layer.visible { opacity: 1; }
+
+    .designer-phone-label {
+      position: absolute;
+      bottom: 20px; left: 0; right: 0;
+      text-align: center;
+      font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      z-index: 2;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    }
+
+    /* ─── VENUE SECTION ─── */
+    .venue-section { background: var(--black); }
+
+    .venue-inner {
+      max-width: 1100px; margin: 0 auto;
+      background: linear-gradient(135deg, rgba(30,64,175,0.15), rgba(124,58,237,0.15));
+      border: 1px solid rgba(124,58,237,0.25);
+      border-radius: 24px;
+      padding: 4rem;
+      text-align: center;
+    }
+
+    .venue-inner .section-title { margin-bottom: 1rem; }
+    .venue-inner p { color: var(--gray-light); max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.7; }
+
+    .venue-benefits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+      text-align: left;
+    }
+
+    .venue-benefit {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.4rem;
+    }
+
+    .venue-benefit .icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .venue-benefit h4 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .venue-benefit p { color: var(--gray); font-size: 0.82rem; line-height: 1.5; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 5%;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    footer p { color: var(--gray); font-size: 0.82rem; }
+
+    footer a { color: var(--cyan); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    footer a:hover { color: var(--white); }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    @keyframes glow {
+      from { transform: translate(-50%, -50%) scale(0.9); opacity: 0.6; }
+      to   { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .pillars-inner { grid-template-columns: 1fr; }
+      .pillars-visual { order: -1; }
+      .phone-mockup { width: 170px; height: 340px; }
+      .venue-inner { padding: 2.5rem 1.5rem; }
+      .hero-stats { gap: 2rem; }
+      .designer-layout { grid-template-columns: 1fr; }
+      .designer-preview { order: -1; margin-bottom: 1rem; }
+      .designer-phone-mockup { width: 200px; height: 400px; border-radius: 32px; }
+      .designer-phone-notch { width: 60px; height: 18px; }
+      .designer-phone-screen { border-radius: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Covr</div>
+  <div class="nav-links">
+    <a href="#how-it-works">How it works</a>
+    <a href="#why-covr">Why Covr</a>
+    <a href="#designer">Try it</a>
+    <a href="#venue">Partner with us</a>
+    <a href="#venue" class="nav-cta">Get in touch</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-tag">
+    <span></span>
+    Now arriving in Cork — Summer 2026
+  </div>
+
+  <h1>Your phone case,<br><span class="gradient-text">made in minutes.</span></h1>
+
+  <p>Walk up, choose your design, and walk away with a premium custom phone case — printed on the spot. Covr kiosks bring instant creativity to shopping centres across Ireland.</p>
+
+  <div class="hero-buttons">
+    <a href="#how-it-works" class="btn-primary">See how it works</a>
+    <a href="#venue" class="btn-secondary">Partner with us →</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-number">3 min</div>
+      <div class="stat-label">Print time</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">100+</div>
+      <div class="stat-label">Phone models</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">∞</div>
+      <div class="stat-label">Design options</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-label">The process</div>
+    <div class="section-title">Three steps to<br>something you'll love.</div>
+    <div class="section-sub">No apps, no shipping, no waiting days. Just walk up and create.</div>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">Step 01</div>
+        <div class="step-icon">📱</div>
+        <div class="step-title">Pick your phone</div>
+        <div class="step-desc">Select your exact make and model from our touchscreen. We support over 100 models including the latest iPhones and Androids.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">Step 02</div>
+        <div class="step-icon">🎨</div>
+        <div class="step-title">Design it your way</div>
+        <div class="step-desc">Browse our design library, upload your own photo, or create something entirely original. The screen is your canvas.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">Step 03</div>
+        <div class="step-icon">⚡</div>
+        <div class="step-title">Print in minutes</div>
+        <div class="step-desc">Watch your design come to life. Premium UV-printed cases in under 3 minutes — ready to snap on and show off.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">Step 04</div>
+        <div class="step-icon">💎</div>
+        <div class="step-title">Own something unique</div>
+        <div class="step-desc">Walk away with a high-quality case that's completely yours. Durable, scratch-resistant, and one of a kind.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COVER DESIGNER -->
+<section id="designer" class="designer-section">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-label">Try it yourself</div>
+    <div class="section-title">Design your case<br><span class="gradient-text">right now.</span></div>
+    <div class="section-sub">Pick a design from our gallery or upload your own image — and see it live on a case.</div>
+
+    <div class="designer-layout">
+      <div class="designer-controls">
+        <div class="designer-upload-area" id="uploadArea">
+          <input type="file" id="designUpload" accept="image/*" hidden />
+          <div class="upload-icon">📤</div>
+          <div class="upload-text">Upload your own image</div>
+          <div class="upload-hint">JPG, PNG — tap or drag to upload</div>
+        </div>
+
+        <div class="designer-gallery-label">Or choose a design</div>
+        <div class="designer-gallery" id="designGallery">
+          <button class="gallery-item active" aria-label="Cyan to purple gradient">
+            <div class="gallery-thumb" style="background: linear-gradient(135deg, #06b6d4, #7c3aed);"></div>
+          </button>
+          <button class="gallery-item" aria-label="Blue to cyan gradient">
+            <div class="gallery-thumb" style="background: linear-gradient(135deg, #1e40af, #06b6d4);"></div>
+          </button>
+          <button class="gallery-item" aria-label="Purple to pink gradient">
+            <div class="gallery-thumb" style="background: linear-gradient(160deg, #7c3aed, #ec4899);"></div>
+          </button>
+          <button class="gallery-item" aria-label="Sunset gradient">
+            <div class="gallery-thumb" style="background: linear-gradient(135deg, #f59e0b, #ef4444, #7c3aed);"></div>
+          </button>
+          <button class="gallery-item" aria-label="Mesh pattern">
+            <div class="gallery-thumb" style="background: radial-gradient(circle at 30% 20%, #06b6d4 0%, transparent 50%), radial-gradient(circle at 80% 80%, #7c3aed 0%, transparent 50%), #0a0a0a;"></div>
+          </button>
+          <button class="gallery-item" aria-label="Aurora pattern">
+            <div class="gallery-thumb" style="background: linear-gradient(180deg, #0a0a0a 0%, #1e40af 40%, #06b6d4 60%, #0a0a0a 100%);"></div>
+          </button>
+          <button class="gallery-item" aria-label="Conic gradient">
+            <div class="gallery-thumb" style="background: conic-gradient(from 45deg, #06b6d4, #7c3aed, #1e40af, #06b6d4);"></div>
+          </button>
+          <button class="gallery-item" aria-label="Matte dark">
+            <div class="gallery-thumb" style="background: linear-gradient(135deg, #1a1a2e, #16213e);"></div>
+          </button>
+        </div>
+      </div>
+
+      <div class="designer-preview">
+        <div class="designer-phone-glow"></div>
+        <div class="designer-phone-mockup">
+          <div class="designer-phone-notch"></div>
+          <div class="designer-phone-screen" id="casePreview">
+            <div class="case-design-layer" id="caseDesignLayer" style="background: linear-gradient(135deg, #06b6d4, #7c3aed);"></div>
+            <img class="case-image-layer" id="caseImageLayer" alt="Your uploaded design" />
+          </div>
+          <div class="designer-phone-label">Your design, live</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY COVR -->
+<section id="why-covr" class="pillars">
+  <div class="pillars-inner">
+    <div>
+      <div class="section-label">Why Covr</div>
+      <div class="section-title">Built different,<br>by design.</div>
+      <div class="section-sub">We combined the best printing technology with the simplest experience — so anyone can create something premium in minutes.</div>
+
+      <div class="pillar-list">
+        <div class="pillar">
+          <div class="pillar-icon-wrap pi-cyan">⚡</div>
+          <div class="pillar-text">
+            <h4>Instant gratification</h4>
+            <p>Ready in under 3 minutes. No waiting. No delivery. Just walk away with it.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon-wrap pi-purple">🎨</div>
+          <div class="pillar-text">
+            <h4>Unlimited creativity</h4>
+            <p>Upload your photos, use our designs, or mix and match. Total creative freedom.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon-wrap pi-blue">💎</div>
+          <div class="pillar-text">
+            <h4>Premium quality</h4>
+            <p>UV-printed on durable cases. Colours that last. Quality you can feel.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon-wrap pi-white">🚀</div>
+          <div class="pillar-text">
+            <h4>Cutting-edge tech</h4>
+            <p>State-of-the-art kiosk hardware. Touchscreen interface. Contactless payment.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pillars-visual">
+      <div class="phone-glow"></div>
+      <div class="phone-mockup">
+        <div class="phone-screen">
+          <div class="phone-case-preview">📱</div>
+          <p>Your design<br>printed in<br><strong>under 3 minutes</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VENUE / PARTNER -->
+<section id="venue" class="venue-section">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="venue-inner">
+      <div class="section-label">For venues & partners</div>
+      <div class="section-title">Bring Covr to<br>your shopping centre.</div>
+      <p>Covr kiosks generate footfall, drive dwell time, and create a memorable experience for your customers — with zero operational burden on your team. We handle everything.</p>
+
+      <div class="venue-benefits">
+        <div class="venue-benefit">
+          <div class="icon">📍</div>
+          <h4>Zero effort for you</h4>
+          <p>We install, maintain, and operate the kiosk. You simply provide the space.</p>
+        </div>
+        <div class="venue-benefit">
+          <div class="icon">📈</div>
+          <h4>Footfall driver</h4>
+          <p>A unique, interactive experience that attracts customers and increases dwell time.</p>
+        </div>
+        <div class="venue-benefit">
+          <div class="icon">💰</div>
+          <h4>Revenue share</h4>
+          <p>Flexible commercial models including revenue sharing arrangements for venue partners.</p>
+        </div>
+        <div class="venue-benefit">
+          <div class="icon">🔒</div>
+          <h4>Fully GDPR compliant</h4>
+          <p>Customer data handled securely and in full compliance with Irish and EU regulations.</p>
+        </div>
+      </div>
+
+      <a href="mailto:hello@covr.ie" class="btn-primary" style="font-size:1rem;padding:1rem 2.5rem;display:inline-block;">
+        Enquire about a partnership →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Covr</div>
+  <p>Design it. Print it. Own it.</p>
+  <div style="display:flex;gap:1.5rem;align-items:center;">
+    <a href="mailto:hello@covr.ie">hello@covr.ie</a>
+    <p style="color:var(--gray);font-size:0.8rem;">Cork, Ireland · 2026</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  var uploadArea = document.getElementById('uploadArea');
+  var uploadInput = document.getElementById('designUpload');
+  var gallery = document.getElementById('designGallery');
+  var caseDesignLayer = document.getElementById('caseDesignLayer');
+  var caseImageLayer = document.getElementById('caseImageLayer');
+
+  // Gallery selection
+  gallery.addEventListener('click', function (e) {
+    var item = e.target.closest('.gallery-item');
+    if (!item) return;
+
+    gallery.querySelectorAll('.gallery-item').forEach(function (btn) {
+      btn.classList.remove('active');
+    });
+    item.classList.add('active');
+
+    var thumb = item.querySelector('.gallery-thumb');
+    caseDesignLayer.style.background = thumb.style.background;
+    caseDesignLayer.style.opacity = '1';
+    caseImageLayer.classList.remove('visible');
+  });
+
+  // Upload via click
+  uploadArea.addEventListener('click', function () {
+    uploadInput.click();
+  });
+
+  uploadInput.addEventListener('change', function () {
+    if (this.files && this.files[0]) handleFile(this.files[0]);
+  });
+
+  // Drag and drop
+  uploadArea.addEventListener('dragover', function (e) {
+    e.preventDefault();
+    uploadArea.classList.add('drag-over');
+  });
+
+  uploadArea.addEventListener('dragleave', function () {
+    uploadArea.classList.remove('drag-over');
+  });
+
+  uploadArea.addEventListener('drop', function (e) {
+    e.preventDefault();
+    uploadArea.classList.remove('drag-over');
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      handleFile(e.dataTransfer.files[0]);
+    }
+  });
+
+  function handleFile(file) {
+    if (!file.type.startsWith('image/')) return;
+
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      caseImageLayer.src = e.target.result;
+      caseImageLayer.classList.add('visible');
+      caseDesignLayer.style.opacity = '0';
+
+      gallery.querySelectorAll('.gallery-item').forEach(function (btn) {
+        btn.classList.remove('active');
+      });
+
+      uploadArea.querySelector('.upload-text').textContent = 'Image applied!';
+      uploadArea.querySelector('.upload-hint').textContent = file.name;
+
+      setTimeout(function () {
+        uploadArea.querySelector('.upload-text').textContent = 'Upload your own image';
+        uploadArea.querySelector('.upload-hint').textContent = 'JPG, PNG — tap or drag to upload';
+      }, 3000);
+    };
+    reader.readAsDataURL(file);
+  }
+})();
+</script>
+
+</body>
+</html>
