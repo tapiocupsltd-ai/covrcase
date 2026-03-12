@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy — COVR Ireland</title>
+  <meta name="description" content="COVR Ireland Privacy Policy. How we collect, use and protect your personal data."/>
+  <link rel="canonical" href="https://www.covrcases.com/privacy.html"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #080810; --black-2: #0f0f1a; --card: #12121e;
+      --card-border: rgba(255,255,255,0.07); --blue: #0058B8;
+      --blue-bright: #1E70E8; --cyan: #06c4d4; --white: #ffffff;
+      --mist: #c8d4e8; --gray: #6b7a99;
+      --font-display: 'Syne', sans-serif; --font-body: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--white); font-family: var(--font-body); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+
+    .privacy-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(8,8,16,0.9); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav-logo { font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; letter-spacing: -0.03em; color: var(--white); text-decoration: none; }
+    .nav-logo span { color: var(--blue-bright); }
+    .nav-back { color: var(--mist); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-back:hover { color: var(--white); }
+
+    .page-wrap { max-width: 780px; margin: 0 auto; padding: 8rem 2rem 5rem; }
+
+    .page-eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.75rem; }
+    h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+    .meta { color: var(--gray); font-size: 0.9rem; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+
+    h2 { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; color: var(--white); margin: 2.5rem 0 0.75rem; padding-left: 0.75rem; border-left: 3px solid var(--blue); }
+    h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; color: var(--white); margin: 1.5rem 0 0.5rem; }
+    p { color: var(--mist); font-weight: 300; margin-bottom: 1rem; }
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    ul, ol { color: var(--mist); font-weight: 300; padding-left: 1.5rem; margin-bottom: 1rem; }
+    li { margin-bottom: 0.4rem; }
+
+    .highlight-box {
+      background: rgba(0,88,184,0.1); border: 1px solid rgba(0,88,184,0.25);
+      border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0;
+    }
+    .highlight-box p { margin-bottom: 0; }
+
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.9rem; }
+    th { background: rgba(0,88,184,0.2); color: var(--white); font-weight: 600; padding: 0.6rem 1rem; text-align: left; border: 1px solid rgba(255,255,255,0.1); }
+    td { color: var(--mist); padding: 0.6rem 1rem; border: 1px solid rgba(255,255,255,0.07); font-weight: 300; vertical-align: top; }
+    tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+
+    .toc { background: var(--card); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.5rem 2rem; margin-bottom: 3rem; }
+    .toc h3 { margin-top: 0; color: var(--white); font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; }
+    .toc ol { margin-bottom: 0; color: var(--mist); }
+    .toc li { margin-bottom: 0.3rem; font-size: 0.9rem; }
+    .toc a { color: var(--cyan); }
+
+    footer {
+      background: var(--black); border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 3rem 2rem; text-align: center;
+    }
+    .footer-logo { font-family: var(--font-display); font-weight: 800; font-size: 1.4rem; letter-spacing: -0.02em; }
+    .footer-logo span { color: var(--blue-bright); }
+    footer p { color: var(--gray); font-size: 0.85rem; margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+
+  <div class="privacy-nav">
+    <a class="nav-logo" href="/">COV<span>R</span></a>
+    <a class="nav-back" href="/">← Back to covrcases.com</a>
+  </div>
+
+  <div class="page-wrap">
+    <p class="page-eyebrow">Legal</p>
+    <h1>Privacy Policy</h1>
+    <p class="meta">
+      Last updated: <strong style="color:var(--white)">March 2026</strong> &nbsp;·&nbsp;
+      COVR Ireland Ltd &nbsp;·&nbsp;
+      Questions? <a href="/cdn-cgi/l/email-protection#c3aba6afafac83a0acb5b1a0a2b0a6b0eda0acae"><span class="__cf_email__" data-cfemail="b9d1dcd5d5d6f9dad6cfcbdad8cadcca97dad6d4">[email&#160;protected]</span></a>
+    </p>
+
+    <div class="highlight-box">
+      <p>This Privacy Policy explains how <strong style="color:var(--white)">COVR Ireland Ltd</strong> ("COVR", "we", "us", "our") collects, uses, stores, and protects your personal data when you use our website (<a href="https://www.covrcases.com">covrcases.com</a>), our automated phone case printing kiosks, or any other services we offer. We are committed to protecting your privacy and complying with the EU General Data Protection Regulation (GDPR) and Irish data protection law.</p>
+    </div>
+
+    <div class="toc" role="navigation" aria-label="Table of contents">
+      <h3>Contents</h3>
+      <ol>
+        <li><a href="#controller">Who We Are (Data Controller)</a></li>
+        <li><a href="#what-we-collect">What Personal Data We Collect</a></li>
+        <li><a href="#how-we-use">How We Use Your Data</a></li>
+        <li><a href="#legal-basis">Legal Basis for Processing</a></li>
+        <li><a href="#kiosk">Kiosk Transactions — Special Notes</a></li>
+        <li><a href="#sharing">Who We Share Data With</a></li>
+        <li><a href="#retention">How Long We Keep Your Data</a></li>
+        <li><a href="#transfers">International Data Transfers</a></li>
+        <li><a href="#cookies">Cookies &amp; Tracking</a></li>
+        <li><a href="#rights">Your Rights Under GDPR</a></li>
+        <li><a href="#security">Data Security</a></li>
+        <li><a href="#children">Children's Privacy</a></li>
+        <li><a href="#changes">Changes to This Policy</a></li>
+        <li><a href="#contact">Contact &amp; Complaints</a></li>
+      </ol>
+    </div>
+
+    <h2 id="controller">1. Who We Are (Data Controller)</h2>
+    <p>COVR Ireland Ltd is the data controller responsible for your personal data.</p>
+    <ul>
+      <li><strong>Company name:</strong> COVR Ireland Ltd</li>
+      <li><strong>Registered in:</strong> Ireland</li>
+      <li><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#7f171a1313103f1c10090d1c1e0c1a0c511c1012"><span class="__cf_email__" data-cfemail="731b161f1f1c33101c050110120016005d101c1e">[email&#160;protected]</span></a></li>
+      <li><strong>Website:</strong> <a href="https://www.covrcases.com">www.covrcases.com</a></li>
+    </ul>
+    <p>As we are a small business, we do not have a dedicated Data Protection Officer (DPO). For all data protection matters, please contact us directly at <a href="/cdn-cgi/l/email-protection#8ce4e9e0e0e3ccefe3fafeefedffe9ffa2efe3e1"><span class="__cf_email__" data-cfemail="e8808d848487a88b879e9a8b899b8d9bc68b8785">[email&#160;protected]</span></a>.</p>
+
+    <h2 id="what-we-collect">2. What Personal Data We Collect</h2>
+    <p>We collect different data depending on how you interact with us:</p>
+
+    <h3>2.1 Website (covrcases.com)</h3>
+    <ul>
+      <li><strong>Waitlist sign-ups:</strong> First name and email address, submitted voluntarily by you.</li>
+      <li><strong>Analytics data:</strong> Via Google Analytics 4 — anonymised page views, session duration, device type, browser type, approximate geographic region (country/city level). IP addresses are anonymised before storage.</li>
+      <li><strong>Cookies:</strong> See Section 9 for full details.</li>
+    </ul>
+
+    <h3>2.2 Kiosk Transactions</h3>
+    <ul>
+      <li><strong>Photo/image:</strong> The image you upload to create your custom case. This is processed solely to print your case and is <strong>deleted immediately</strong> after printing is complete — we do not store your photos.</li>
+      <li><strong>Payment data:</strong> Card payments are processed by <strong>SumUp</strong> (a PCI-DSS compliant third-party payment processor). COVR does <strong>not</strong> receive, store, or process your full card number, CVV, or payment credentials. We receive only a transaction confirmation reference.</li>
+      <li><strong>Transaction records:</strong> Date, time, case model selected, transaction amount, and anonymised payment confirmation. No name or card details.</li>
+    </ul>
+
+    <h3>2.3 Direct Communications</h3>
+    <ul>
+      <li>If you email us or contact us directly: your name, email address, and the content of your message.</li>
+    </ul>
+
+    <h2 id="how-we-use">3. How We Use Your Data</h2>
+    <table>
+      <thead>
+        <tr><th>Purpose</th><th>Data Used</th><th>Legal Basis</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Send launch announcement and exclusive pricing to waitlist members</td><td>Name, email</td><td>Consent</td></tr>
+        <tr><td>Print your custom phone case at the kiosk</td><td>Uploaded photo</td><td>Contract performance</td></tr>
+        <tr><td>Process your payment</td><td>Via SumUp (we don't hold card data)</td><td>Contract performance</td></tr>
+        <tr><td>Maintain transaction records for accounting &amp; tax purposes</td><td>Anonymised transaction data</td><td>Legal obligation</td></tr>
+        <tr><td>Improve our website and kiosk experience</td><td>Anonymised analytics data</td><td>Legitimate interest (analytics only after consent)</td></tr>
+        <tr><td>Respond to your enquiries or complaints</td><td>Name, email, message</td><td>Legitimate interest / contract performance</td></tr>
+        <tr><td>Comply with Irish and EU law</td><td>As required by law</td><td>Legal obligation</td></tr>
+      </tbody>
+    </table>
+
+    <p>We will <strong>never</strong> sell your personal data to third parties. We will <strong>never</strong> use your data for automated profiling or decision-making that produces legal effects.</p>
+
+    <h2 id="legal-basis">4. Legal Basis for Processing</h2>
+    <p>Under GDPR Article 6, we process your personal data on the following legal bases:</p>
+    <ul>
+      <li><strong>Consent (Art. 6(1)(a)):</strong> When you join our waitlist or accept analytics cookies. You can withdraw consent at any time (see Section 10).</li>
+      <li><strong>Contract performance (Art. 6(1)(b)):</strong> When you purchase a case at the kiosk — processing your image and payment is necessary to fulfil your order.</li>
+      <li><strong>Legal obligation (Art. 6(1)(c)):</strong> To comply with Irish tax law and financial record-keeping requirements.</li>
+      <li><strong>Legitimate interest (Art. 6(1)(f)):</strong> For responding to direct enquiries and maintaining basic operational records, where this doesn't override your rights.</li>
+    </ul>
+
+    <h2 id="kiosk">5. Kiosk Transactions — Special Notes</h2>
+    <div class="highlight-box">
+      <p><strong>Your photo is never stored.</strong> The image you upload at the kiosk is used exclusively to print your case. Once printing is complete, the image is deleted from the machine. COVR does not retain, view, or transmit your photos to any third party.</p>
+    </div>
+    <p>The kiosk operates a self-service model — no COVR staff member views your photo during the transaction. The process is fully automated. Transaction logs record only the case model, price, and an anonymised payment reference for accounting purposes.</p>
+    <p>The kiosk does <strong>not</strong> use facial recognition, biometric scanning, or any form of identity verification.</p>
+
+    <h2 id="sharing">6. Who We Share Data With</h2>
+    <p>We share data only where necessary and with appropriate safeguards in place:</p>
+    <table>
+      <thead>
+        <tr><th>Recipient</th><th>Purpose</th><th>Location</th><th>Safeguard</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>SumUp</strong> (payment processing)</td><td>Processing card payments</td><td>EU (Germany)</td><td>PCI-DSS compliant; GDPR Article 28 processor agreement</td></tr>
+        <tr><td><strong>Brevo</strong> (email / waitlist)</td><td>Storing waitlist emails and sending launch announcements</td><td>EU (France)</td><td>GDPR compliant; Standard Contractual Clauses</td></tr>
+        <tr><td><strong>Google Analytics 4</strong> (website analytics)</td><td>Anonymised website usage analytics</td><td>USA</td><td>Only activated with your cookie consent; IP anonymisation enabled; Standard Contractual Clauses</td></tr>
+        <tr><td><strong>GitHub Pages</strong> (website hosting)</td><td>Hosting covrcases.com</td><td>USA</td><td>Standard Contractual Clauses</td></tr>
+        <tr><td><strong>Irish Revenue Commissioners</strong></td><td>VAT and tax compliance</td><td>Ireland</td><td>Legal obligation under Irish law</td></tr>
+      </tbody>
+    </table>
+    <p>We do not share your data with retail venue partners (e.g., shopping centres hosting our kiosk) beyond anonymised aggregate sales figures for revenue-share accounting purposes.</p>
+
+    <h2 id="retention">7. How Long We Keep Your Data</h2>
+    <table>
+      <thead>
+        <tr><th>Data Type</th><th>Retention Period</th><th>Reason</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Kiosk photos (uploaded images)</td><td>Deleted immediately after printing</td><td>Not required after fulfilment</td></tr>
+        <tr><td>Waitlist email &amp; name</td><td>Until you unsubscribe, or 2 years from last activity</td><td>Consent-based; withdrawn on request</td></tr>
+        <tr><td>Transaction records (anonymised)</td><td>7 years</td><td>Irish Revenue / Companies Act requirement</td></tr>
+        <tr><td>Direct email correspondence</td><td>2 years from last contact</td><td>Legitimate interest for dispute resolution</td></tr>
+        <tr><td>Analytics data (Google Analytics)</td><td>13 months (GA4 default)</td><td>Website performance improvement</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="transfers">8. International Data Transfers</h2>
+    <p>Some of our third-party service providers process data outside the European Economic Area (EEA), including in the United States (Google Analytics, GitHub). Where this occurs, we ensure appropriate safeguards are in place, including:</p>
+    <ul>
+      <li>Standard Contractual Clauses (SCCs) approved by the European Commission</li>
+      <li>Adequacy decisions where applicable</li>
+      <li>IP anonymisation for Google Analytics (data sent to Google is anonymised before transfer)</li>
+    </ul>
+
+    <h2 id="cookies">9. Cookies &amp; Tracking</h2>
+    <p>Our website uses cookies. When you first visit covrcases.com, you will be shown a cookie consent banner. We only activate analytics cookies if you give your consent.</p>
+    <table>
+      <thead>
+        <tr><th>Cookie</th><th>Type</th><th>Purpose</th><th>Duration</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>covr_cookie_consent</code></td><td>Necessary</td><td>Records your cookie preference so we don't ask you every visit</td><td>1 year</td></tr>
+        <tr><td><code>_ga</code>, <code>_ga_*</code></td><td>Analytics (optional)</td><td>Google Analytics 4 — anonymised website usage statistics</td><td>Up to 13 months</td></tr>
+      </tbody>
+    </table>
+    <p>You can change your cookie preferences at any time by clearing your browser cookies and revisiting the site. Most browsers also allow you to block or delete cookies — see your browser's help documentation for instructions.</p>
+    <p>We do not use advertising cookies, tracking pixels from social media platforms, or any form of behavioural targeting cookies.</p>
+
+    <h2 id="rights">10. Your Rights Under GDPR</h2>
+    <p>As a data subject under GDPR, you have the following rights. To exercise any of these rights, email us at <a href="/cdn-cgi/l/email-protection#3a525f5656557a59554c48595b495f4914595557"><span class="__cf_email__" data-cfemail="3a525f5656557a59554c48595b495f4914595557">[email&#160;protected]</span></a>. We will respond within <strong>30 days</strong>.</p>
+    <ul>
+      <li><strong>Right of access (Art. 15):</strong> You can request a copy of the personal data we hold about you.</li>
+      <li><strong>Right to rectification (Art. 16):</strong> You can ask us to correct inaccurate data.</li>
+      <li><strong>Right to erasure (Art. 17):</strong> You can ask us to delete your data ("right to be forgotten"), subject to legal retention requirements.</li>
+      <li><strong>Right to restrict processing (Art. 18):</strong> You can ask us to limit how we use your data in certain circumstances.</li>
+      <li><strong>Right to data portability (Art. 20):</strong> Where we process data based on consent or contract, you can request your data in a machine-readable format.</li>
+      <li><strong>Right to object (Art. 21):</strong> You can object to processing based on legitimate interests.</li>
+      <li><strong>Right to withdraw consent:</strong> Where processing is based on consent (waitlist, analytics cookies), you can withdraw consent at any time without affecting the lawfulness of prior processing. To unsubscribe from the waitlist, use the unsubscribe link in any email or contact us directly.</li>
+      <li><strong>Right not to be subject to automated decision-making:</strong> We do not carry out automated decision-making or profiling that produces legal or similarly significant effects.</li>
+    </ul>
+
+    <h2 id="security">11. Data Security</h2>
+    <p>We implement appropriate technical and organisational measures to protect your personal data against unauthorised access, loss, destruction, or alteration, including:</p>
+    <ul>
+      <li>HTTPS encryption for all data transmitted to/from covrcases.com</li>
+      <li>Secure, access-controlled systems for any stored data</li>
+      <li>Use of PCI-DSS compliant payment processing (SumUp) — we never handle raw card data</li>
+      <li>Immediate deletion of kiosk photos after printing</li>
+      <li>Regular review of third-party data processors and their security standards</li>
+    </ul>
+    <p>In the unlikely event of a data breach that poses a risk to your rights and freedoms, we will notify the Data Protection Commission (DPC) within 72 hours and affected individuals without undue delay, as required by GDPR Article 33–34.</p>
+
+    <h2 id="children">12. Children's Privacy</h2>
+    <p>Our website and kiosk services are not directed at children under the age of 16. We do not knowingly collect personal data from children under 16. If you believe a child has provided us with personal data, please contact us at <a href="/cdn-cgi/l/email-protection#fe969b929291be9d91888c9d9f8d9b8dd09d9193"><span class="__cf_email__" data-cfemail="3b535e5757547b58544d49585a485e4815585456">[email&#160;protected]</span></a> and we will delete it promptly.</p>
+
+    <h2 id="changes">13. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time to reflect changes in our services or legal requirements. When we make significant changes, we will update the "Last updated" date at the top of this page. We encourage you to review this page periodically. Continued use of our services after changes constitutes acceptance of the updated policy.</p>
+
+    <h2 id="contact">14. Contact &amp; Complaints</h2>
+    <p>For any questions about this Privacy Policy or how we handle your data:</p>
+    <ul>
+      <li><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#ef878a838380af8c80999d8c8e9c8a9cc18c8082"><span class="__cf_email__" data-cfemail="d2bab7bebebd92b1bda4a0b1b3a1b7a1fcb1bdbf">[email&#160;protected]</span></a></li>
+      <li><s

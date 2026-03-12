@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# AI crawlers — allowed for citation visibility
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+# Block prototype/dev pages from all crawlers
+Disallow: /covr-landing.html
+
+Sitemap: https://www.covrcases.com/sitemap.xml

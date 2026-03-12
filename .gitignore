@@ -1,0 +1,20 @@
+# OS files
+.DS_Store
+
+# Backup / archive
+index-original.html
+*.docx
+
+# Dev snippets (not public pages)
+cookie-banner-snippet.html
+
+# Root-level asset duplicates (served from assets/ and images/ on the live site)
+covr-logo.png
+og-image.jpg
+og-image.png
+og-image copy.png
+iphone16procusomtcase.png
+iphone17customcase.png
+kiosk-hero.png
+pixel9customcase.png
+s25customcase.png
