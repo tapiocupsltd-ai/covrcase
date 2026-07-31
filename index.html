@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>COVR — Custom Phone Cases Printed in 3 Minutes | Ireland</title>
-  <meta name="description" content="Ireland's first automated phone case printing kiosk. Upload your photo, pay, and collect a custom-printed case in under 3 minutes. Coming to Ireland soon."/>
+  <title>COVR — Custom Phone Cases Printed in 3 Minutes | Now Live in Cork</title>
+  <meta name="description" content="Ireland's first automated phone case printing kiosk. Now open at Marina Market, Cork. Upload your photo, pay, and collect a custom-printed case in under 3 minutes."/>
   <meta property="og:title" content="COVR — Your Photo. Your Case. 3 Minutes."/>
-  <meta property="og:description" content="Ireland's first automated phone case printing kiosk. Custom cases in under 3 minutes."/>
+  <meta property="og:description" content="Ireland's first automated phone case printing kiosk. Now live at Marina Market, Cork."/>
   <meta property="og:type" content="website"/>
   <meta property="og:image" content="https://www.covrcases.com/assets/og-image.jpg"/>
   <meta property="og:image:width" content="1200"/>
@@ -46,6 +46,32 @@
   }
   </script>
 
+  <!-- LocalBusiness Schema — Marina Market Cork -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "COVR — Marina Market",
+    "image": "https://www.covrcases.com/assets/og-image.jpg",
+    "url": "https://www.covrcases.com",
+    "priceRange": "€25–€30",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Centre Park Road",
+      "addressLocality": "Cork",
+      "postalCode": "T12 YX76",
+      "addressCountry": "IE"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "08:00",
+      "closes": "20:00"
+    },
+    "parentOrganization": { "@type": "Organization", "name": "COVR" }
+  }
+  </script>
+
   <!-- HowTo Schema -->
   <script type="application/ld+json">
   {
@@ -58,7 +84,7 @@
     "step": [
       { "@type": "HowToStep", "position": 1, "name": "Scan the QR Code", "text": "Open your phone camera and scan the QR code on the kiosk. Upload your favourite photo from your camera roll, Instagram, or anywhere." },
       { "@type": "HowToStep", "position": 2, "name": "Choose & Pay", "text": "Select your phone model, adjust the design, and tap to pay with card or contactless. €25 for a standard case, €30 for a magnetic case." },
-      { "@type": "HowToStep", "position": 3, "name": "Collect Your Case", "text": "Watch the machine print your case in real time. In 3 minutes flat, collect your premium custom case from the dispenser." }
+      { "@type": "HowToStep", "position": 3, "name": "Collect Your Case", "text": "Watch the machine print your case in real time. In 3 minutes flat, collect your scratch-resistant, UV-printed case from the dispenser." }
     ]
   }
   </script>
@@ -72,7 +98,7 @@
       { "@type": "Question", "name": "How long does it take to print a custom phone case?", "acceptedAnswer": { "@type": "Answer", "text": "COVR prints your custom phone case in under 3 minutes. The full process — scanning the QR code, uploading your photo, paying, and collecting — takes about 5 minutes." } },
       { "@type": "Question", "name": "How much does a COVR custom phone case cost?", "acceptedAnswer": { "@type": "Answer", "text": "A standard custom phone case costs €25. A MagSafe magnetic case costs €30. Payment is by card or contactless at the kiosk." } },
       { "@type": "Question", "name": "What phone models are compatible with COVR?", "acceptedAnswer": { "@type": "Answer", "text": "COVR supports iPhone 14 through iPhone 17, Samsung Galaxy S23 through S25, and Google Pixel 7 through Pixel 9." } },
-      { "@type": "Question", "name": "Where is the COVR kiosk located?", "acceptedAnswer": { "@type": "Answer", "text": "COVR is coming soon. Join the waitlist at covrcases.com to be first to know and get exclusive launch-week pricing." } },
+      { "@type": "Question", "name": "Where is the COVR kiosk located?", "acceptedAnswer": { "@type": "Answer", "text": "COVR is now open at Marina Market, Centre Park Road, Cork, T12 YX76 — open 7 days a week, 8am to 8pm. More locations are coming across Ireland." } },
       { "@type": "Question", "name": "Is UV-printed phone case quality good?", "acceptedAnswer": { "@type": "Answer", "text": "COVR uses UV-cured ink bonded directly to the case material — not a sticker or paper sleeve. The result is a vivid, scratch-resistant print built to last." } }
     ]
   }
@@ -467,6 +493,27 @@
     .product-models { color: var(--covr-mist); font-size: 0.9rem; }
     .product-models strong { color: var(--covr-white); font-weight: 600; }
 
+    /* ── FIND US ── */
+    #find-us {
+      background: linear-gradient(180deg, var(--covr-black-2) 0%, var(--covr-black) 100%);
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .findus-row {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+      margin: 2.5rem 0 2rem;
+    }
+    @media (max-width: 640px) { .findus-row { grid-template-columns: 1fr; } }
+    .findus-card {
+      background: var(--covr-card);
+      border: 1px solid var(--covr-card-border);
+      border-radius: 12px; padding: 1.25rem 1.5rem;
+    }
+    .findus-label {
+      font-size: 0.73rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--covr-cyan); margin-bottom: 0.35rem;
+    }
+    .findus-value { font-weight: 600; font-size: 1.02rem; color: var(--covr-white); }
+
     /* ── WAITLIST ── */
     #waitlist {
       background: linear-gradient(135deg, var(--covr-black-2) 0%, rgba(30,64,175,0.08) 100%);
@@ -685,10 +732,11 @@
     <div class="nav-links">
       <a href="#how">How It Works</a>
       <a href="#product">Product</a>
+      <a href="#find-us">Find Us</a>
       <a href="#partners">For Venues</a>
-      <a href="#waitlist" class="nav-cta">Join the Waitlist</a>
+      <a href="#find-us" class="nav-cta">Get Directions</a>
     </div>
-    <a href="#waitlist" class="nav-mobile-cta">Join Waitlist</a>
+    <a href="#find-us" class="nav-mobile-cta">Find Us</a>
     <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -698,8 +746,8 @@
   <div class="mobile-menu" id="mobile-menu">
     <a href="#how" onclick="closeMobileMenu()">How It Works</a>
     <a href="#product" onclick="closeMobileMenu()">Product</a>
-    <a href="#partners" onclick="closeMobileMenu()" class="highlight">→ For Venues</a>
-    <a href="#waitlist" onclick="closeMobileMenu()">Join Waitlist</a>
+    <a href="#find-us" onclick="closeMobileMenu()" class="highlight">→ Find Us</a>
+    <a href="#partners" onclick="closeMobileMenu()">For Venues</a>
   </div>
 
   <!-- HERO -->
@@ -715,11 +763,11 @@
 
       <!-- Consumer hero -->
       <div class="hero-consumer" id="hero-consumer">
-        <div class="hero-badge">Ireland's First — Ready in 3 Min</div>
+        <div class="hero-badge">Now Live — Marina Market, Cork</div>
         <h1>Your Photo.<br><em>Your Case.</em><br>3 Minutes.</h1>
-        <p class="hero-sub">Ireland's first automated phone case printing kiosk. Scan a QR code, upload a photo, pay by card — walk away with a premium custom case while you shop.</p>
+        <p class="hero-sub">Ireland's first automated phone case printing kiosk is open now at Marina Market, Cork. Scan a QR code, upload a photo, pay by card — walk away with a scratch-resistant, UV-printed case while you shop.</p>
         <div class="hero-ctas">
-          <a href="#waitlist" class="btn-primary">Join the Launch List</a>
+          <a href="#find-us" class="btn-primary">Get Directions</a>
           <a href="#how" class="btn-secondary">See How It Works →</a>
         </div>
       </div>
@@ -768,7 +816,7 @@
           <div class="step-num">03</div>
           <span class="step-icon">🎨</span>
           <h3>Collect Your Case</h3>
-          <p>Watch the machine print your case in real time. In 3 minutes flat, collect your premium custom case from the dispenser.</p>
+          <p>Watch the machine print your case in real time. In 3 minutes flat, collect your scratch-resistant, UV-printed case from the dispenser.</p>
         </div>
       </div>
     </div>
@@ -778,7 +826,7 @@
   <section id="product">
     <div class="container">
       <p class="section-eyebrow">The Product</p>
-      <h2 class="section-title">Premium UV print.<br>Every time.</h2>
+      <h2 class="section-title">UV-cured print.<br>Every time.</h2>
       <p class="section-body">Not a sticker. Not a paper sleeve. UV-cured ink bonded directly to the case — vivid, scratch-resistant, and built to last. Custom cases online cost €40+ and take weeks. Ours print in 3 minutes for €25.</p>
       <div class="case-grid">
         <div class="case-card" data-delay="0">
@@ -824,8 +872,32 @@
           <div class="product-stat-label">Print Time</div>
         </div>
         <p class="product-models"><strong>20+ models supported:</strong> iPhone 14–17 · Samsung S23–S25 · Google Pixel 7–9</p>
-        <a href="#waitlist" class="btn-primary">Claim My Spot at Launch</a>
+        <a href="#find-us" class="btn-primary">Find Us &amp; Try It</a>
       </div>
+    </div>
+  </section>
+
+  <!-- FIND US -->
+  <section id="find-us">
+    <div class="container">
+      <p class="section-eyebrow">Find Us</p>
+      <h2 class="section-title">Live now at<br>Marina Market, Cork</h2>
+      <p class="section-body">Cork's largest indoor &amp; outdoor market — dog-friendly, parking on-site. Walk in, scan the QR code, walk out with your case.</p>
+      <div class="findus-row">
+        <div class="findus-card">
+          <div class="findus-label">Address</div>
+          <div class="findus-value">Centre Park Road, Cork, T12 YX76</div>
+        </div>
+        <div class="findus-card">
+          <div class="findus-label">Hours</div>
+          <div class="findus-value">Mon–Sun, 8am – 8pm</div>
+        </div>
+        <div class="findus-card">
+          <div class="findus-label">Price</div>
+          <div class="findus-value">€25 standard · €30 MagSafe</div>
+        </div>
+      </div>
+      <a href="https://maps.google.com/?q=Marina+Market+Centre+Park+Road+Cork+T12+YX76" target="_blank" rel="noopener" class="btn-primary">Get Directions →</a>
     </div>
   </section>
 
@@ -833,15 +905,15 @@
   <section id="waitlist">
     <div class="container">
       <div class="waitlist-inner">
-        <p class="section-eyebrow">Coming to Ireland</p>
-        <h2 class="section-title">Be first when we launch</h2>
-        <p class="section-body" style="margin:0 auto; text-align:center;">Get notified the moment we go live. Waitlist members get exclusive launch-week pricing — spots are limited.</p>
+        <p class="section-eyebrow">Expanding Across Ireland</p>
+        <h2 class="section-title">Get notified when we open near you</h2>
+        <p class="section-body" style="margin:0 auto; text-align:center;">Marina Market, Cork is live now. More locations are coming — be first to know when COVR opens near you.</p>
         <form class="waitlist-form" id="waitlist-form" onsubmit="handleWaitlist(event)">
           <input type="text" placeholder="Your first name" id="wl-name" required autocomplete="name"/>
           <input type="email" placeholder="Your email address" id="wl-email" required autocomplete="email"/>
-          <button type="submit" class="btn-primary" id="wl-btn">Claim My Spot</button>
+          <button type="submit" class="btn-primary" id="wl-btn">Notify Me</button>
         </form>
-        <div class="success-msg" id="success-msg">🎉 You're on the list. We'll see you at launch.</div>
+        <div class="success-msg" id="success-msg">You're on the list. We'll let you know when we open near you.</div>
         <p class="waitlist-note">No spam. Unsubscribe any time.</p>
         <div class="social-row">
           <a href="https://instagram.com/covr_ireland" target="_blank" rel="noopener" class="social-btn">
@@ -925,7 +997,7 @@
     <div class="container">
       <p class="section-eyebrow">About COVR</p>
       <h2 class="section-title">Irish. Tech-forward.<br>Built to last.</h2>
-      <p class="about-story">COVR is an Irish company on a mission to bring instant, premium personalisation to retail. We're deploying Ireland's first automated UV phone case printing kiosks in premium shopping centres — coming to Ireland soon. No gimmicks, no compromises: just the best custom phone case you can buy, ready while you shop.</p>
+      <p class="about-story">COVR is an Irish company bringing custom, UV-printed personalisation to Irish retail and hospitality venues in under 3 minutes. Ireland's first automated phone case printing kiosk is live now at Marina Market, Cork — with more venues opening across Ireland next. No gimmicks, no compromises: a scratch-resistant, custom-printed case, ready while you shop.</p>
       <div class="pillars">
         <div class="pillar">
           <span class="pillar-icon">⚡</span>
@@ -939,8 +1011,8 @@
         </div>
         <div class="pillar">
           <span class="pillar-icon">💎</span>
-          <div class="pillar-label">Premium</div>
-          <div class="pillar-desc">Quality that lasts</div>
+          <div class="pillar-label">Durable</div>
+          <div class="pillar-desc">Scratch-resistant, UV-cured</div>
         </div>
         <div class="pillar">
           <span class="pillar-icon">🚀</span>
@@ -960,7 +1032,7 @@
       </div>
       <div class="footer-links">
         <a href="mailto:hello@covrcases.com">hello@covrcases.com</a>
-        <a href="#waitlist">Waitlist</a>
+        <a href="#find-us">Find Us</a>
         <a href="#partners">Partners</a>
         <a href="privacy.html">Privacy Policy</a>
       </div>
