@@ -6,7 +6,7 @@ The website changes add a Cork location page, a venue page, visible FAQs, cleare
 
 - Kiosk position confirmed as "by the Graffiti Room". A real photo of the kiosk in place would still help — the current hero image is a generic shopping-centre render.
 - Confirm individual phone variants currently stocked, including which variants have magnetic cases and supported accessories. The pages deliberately publish existing model ranges rather than inventing a live stock list.
-- Supply a cases-printed count for the hero proof strip (slot is commented in `index.html`).
+- Update the "150+ cases printed" figure in the `index.html` hero proof strip as it grows.
 - Supply a short real kiosk demonstration video and customer feedback with permission to publish. No invented testimonials or footage have been added.
 - Reconfirm opening hours and the market address before publishing; these are preserved from the existing live site.
 
