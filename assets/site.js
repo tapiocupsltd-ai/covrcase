@@ -94,3 +94,35 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.step, .case-card, .partner-card').forEach(el => observer.observe(el));
+
+    // ── NOTIFY BAR ──
+    // Shows once the hero scrolls away; hidden while the waitlist itself or the cookie banner is on screen.
+    (function () {
+      const bar  = document.getElementById('notify-bar');
+      const hero = document.getElementById('hero');
+      const wl   = document.getElementById('waitlist');
+      if (!bar || !hero) return;
+      const KEY = 'covr_notify_dismissed';
+      try { if (localStorage.getItem(KEY)) return; } catch {}
+
+      let pastHero = false, atWaitlist = false, done = false;
+      const cookieOpen = () => document.getElementById('cookie-banner')?.classList.contains('visible')
+                              && document.getElementById('cookie-banner').style.display !== 'none';
+      function update() {
+        const show = !done && pastHero && !atWaitlist && !cookieOpen();
+        if (show) { bar.hidden = false; requestAnimationFrame(() => bar.classList.add('visible')); }
+        else { bar.classList.remove('visible'); }
+      }
+      function dismiss() {
+        done = true; update();
+        try { localStorage.setItem(KEY, '1'); } catch {}
+      }
+
+      new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting; update(); }).observe(hero);
+      if (wl) new IntersectionObserver(([e]) => { atWaitlist = e.isIntersecting; update(); }).observe(wl);
+      window.addEventListener('scroll', update, { passive: true });
+
+      bar.querySelector('.notify-bar-close').addEventListener('click', dismiss);
+      bar.querySelector('.notify-bar-cta').addEventListener('click', () => { done = true; update(); });
+      document.getElementById('waitlist-form')?.addEventListener('submit', dismiss);
+    })();

@@ -1,6 +1,6 @@
 # COVR
 
-COVR operates an automated custom phone case printing kiosk at Marina Market, Centre Park Road, Cork, T12 YX76, Ireland.
+COVR operates a self-service phone case printing kiosk at Marina Market, Centre Park Road, Cork, T12 YX76, Ireland. The kiosk is inside the market, by the Graffiti Room. Customers print a same-day custom phone case from their own photo while they wait.
 Listed opening hours: Monday–Sunday, 8am–8pm.
 Standard custom cases cost €25; magnetic cases cost €30. Pay by card or contactless at the kiosk.
 Printing takes around 3 minutes; allow extra time to choose a model, upload and adjust the photo, and pay. No app download is needed.
